@@ -18,5 +18,4 @@ for email in emails:
     server.sendmail(sendAddress, email, body)
 # Завершаем соединение
 server.quit()
-
 print('Final')
