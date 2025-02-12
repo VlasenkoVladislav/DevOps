@@ -19,9 +19,4 @@ for email in emails:
 # Завершаем соединение
 server.quit()
 
-print('test git1')
-print("test git2")
-print("test git3")
-print("test git4")
-print("test branch test")
-print("test main2")
+print('Final')
