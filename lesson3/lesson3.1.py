@@ -18,3 +18,7 @@ for email in emails:
     server.sendmail(sendAddress, email, body)
 # Завершаем соединение
 server.quit()
+
+print('test git1')
+print("test git2")
+print("test git3")
