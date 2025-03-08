@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+
+    environment {
+        ELASTICSEARCH_VERSION = "7.10.1"  // Версия Elasticsearch
+        ELASTICSEARCH_CONTAINER_NAME = "elasticsearch"
+        ELASTICSEARCH_HOST = "localhost"
+        ELASTICSEARCH_PORT = "9200"
+    }
+
+    stages {
+        stage('Pull Elasticsearch Docker Image') {
+            steps {
+                script {
+                    sh "docker pull docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION}"
+                }
+            }
+        }
+
+        stage('Run Elasticsearch Container') {
+            steps {
+                script {
+                    sh """
+                    docker run -d \
+                    --name ${ELASTICSEARCH_CONTAINER_NAME} \
+                    -p ${ELASTICSEARCH_PORT}:9200 \
+                    -e "discovery.type=single-node" \
+                    docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION}
+                    """
+                }
+            }
+        }
+
+        stage('Wait for Elasticsearch to be ready') {
+            steps {
+                script {
+                    retry(10) {
+                        sleep 10
+                        sh """
+                        curl -X GET "http://${ELASTICSEARCH_HOST}:${ELASTICSEARCH_PORT}/_cluster/health?wait_for_status=green&timeout=50s"
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Test Elasticsearch') {
+            steps {
+                script {
+                    sh """
+                    curl -X GET "http://${ELASTICSEARCH_HOST}:${ELASTICSEARCH_PORT}/"
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                sh "docker stop ${ELASTICSEARCH_CONTAINER_NAME} || true"
+                sh "docker rm ${ELASTICSEARCH_CONTAINER_NAME} || true"
+            }
+        }
+    }
+}
