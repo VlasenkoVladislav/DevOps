@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        ELASTICSEARCH_VERSION = "7.10.1"  // Версия Elasticsearch
+        ELASTICSEARCH_VERSION = "7.10.1"
         ELASTICSEARCH_CONTAINER_NAME = "elasticsearch"
         ELASTICSEARCH_HOST = "localhost"
         ELASTICSEARCH_PORT = "9200"
