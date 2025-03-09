@@ -1,0 +1,10 @@
+мар. 10, 2025 12:24:52 AM hudson.remoting.Launcher createEngine
+INFO: Setting up agent: Windows-Slave
+мар. 10, 2025 12:24:52 AM hudson.remoting.Engine startEngine
+INFO: Using Remoting version: 3283.v92c105e0f819
+мар. 10, 2025 12:24:52 AM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using D:\DevOps\DevOps\homework8\jenkins\remoting as a remoting work directory
+мар. 10, 2025 12:24:52 AM hudson.remoting.Launcher$CuiListener status
+INFO: WebSocket connection open
+мар. 10, 2025 12:24:52 AM hudson.remoting.Launcher$CuiListener status
+INFO: Connected

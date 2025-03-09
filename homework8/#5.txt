@@ -1,0 +1,17 @@
+Started by user Administrator
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Windows-Slave in D:\DevOps\DevOps\homework8\jenkins\workspace\WindowsJob
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run Windows-Slave)
+[Pipeline] bat
+
+D:\DevOps\DevOps\homework8\jenkins\workspace\WindowsJob>D:\DevOps\DevOps\homework8\Windows-Slave.bat
+Hello from Windows-Slave!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
